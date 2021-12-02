@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- FONT AWESOME -->
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <title>Company</title>
+</head>
+
+<body>
+
+  <!--                  NAV             -->
+
+  <nav>
+    <div class="container-fluid" style="margin-top: 20px;">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active fs-3 fw-bold" aria-current="page" href="./movie.html">Películas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-5 fw-bold" href="./offices.html">Categorías</a>
+        </li>
+
+
+      </ul>
+    </div>
+
+  </nav>
+
+  <!--                  REGISTRO              -->
+
+<section>
+  <div class="container">
+    <div style="margin-left: 25%; margin-top: 30px; margin-bottom: 30px;">
+        <div class="card text-center card text-dark bg-light mb-3" style="padding-top: 25px; width: 70%;">
+            <div class="card-header" >
+                <h4>Registro de Películas</h4>
+            </div>
+            <div class="card-body">
+                <form action="javascript:void(0);" onsubmit="registerMovie();">
+                    <div class="row">
+                        <div class="col-6">
+                            <label  class="form-label">Nombre de la Película</label>
+                            <input type="text" class="form-control" id="title_register" aria-describedby="title_register">                            
+                        </div>
+                        <div class="col-6">
+                            <label  class="form-label">Descripción</label>
+                            <input type="text" class="form-control" id="description_register" aria-describedby="description_register">
+                        </div>
+                        <div class="col-6">
+                          <label  class="form-label">Sinopsis</label>
+                          <input type="text" class="form-control" id="synopsis_register" aria-describedby="name_register">                            
+                      </div>
+                      <div class="col-6">
+                        <label  class="form-label">Raiting</label>
+                        <input type="text" class="form-control" id="rating_register" aria-describedby="name_register">                            
+                    </div>
+                      <div class="col-6">
+                        <label  class="form-label">Categoría</label>
+                        <input type="text" class="form-control" id="category_register" aria-describedby="name_register">                            
+                    </div>
+                    </div>
+                    <br>
+                    <button id="registrar" class="btn btn-success " style="float: right;" type="submit">Registrar</button>
+                </form>
+            </div>
+    </div>
+    
+</div>
+</div>
+</section>
+
+  <!--                  TABLA DE CONTENIDO              -->
+
+  <section style="margin-top: 30px;">
+
+    <div class="container-fluid">
+      <table id="table" class="table table-bordered table-secondary ">
+        <thead>
+          <tr class="table-dark">
+            <th>#</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Sinopsis</th>
+            <th>Raiting</th>
+            <th>Registrado</th>
+            <th>Actualizado</th>
+            <th>Estado</th>
+            <th>Categoría</th>
+            <th style="text-align: center;">Detalles</th>
+            <th style="text-align: center;">Actualizar</th>
+            <th style="text-align: center;">Desactivar</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    </div>
+  </section>
+
+    <!--                MODAL UPDATE DETAILS              -->
+
+  <section>
+
+    <div class="modal fade" id="details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <label>Título:</label>
+                  <input type="text" class="form-control" id="title" disabled>
+                  <label>Descripción:</label>
+                  <input type="text" class="form-control" id="description" disabled>
+                  <label>Sinopsis:</label>
+                  <input type="text" class="form-control" id="synopsis" disabled>
+                  <label>Raiting:</label>
+                  <input type="text" class="form-control" id="rating" disabled>
+                  <label>Fecha de registro:</label>
+                  <input type="datetime" class="form-control" id="dateCreated" disabled>
+                  <label>Fecha de actualización:</label>
+                  <input type="datetime" class="form-control" id="dateUpdate" disabled>
+                  <label>Estado:</label>
+                  <input type="text" class="form-control" id="state" disabled>
+                  <label>Categoría:</label>
+                  <input type="text" class="form-control" id="category" disabled>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>
+
+    <!--                MODAL UPDATE              -->
+
+  <section>
+       
+        <div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Actualizar</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form action="javascript:void(0);" onsubmit="updateMovie();">
+                      <div class="modal-body">
+                          <input type="hidden" id="id_update">
+                          <label>Título:</label>
+                          <input type="text" class="form-control" id="title_update">
+                          <label>Descripción:</label>
+                          <input type="text" class="form-control" id="description_update">
+                          <label>Sinopsis:</label>
+                          <input type="text" class="form-control" id="synopsis_update">
+                          <label>Raiting:</label>
+                          <input type="text" class="form-control" id="rating_update">
+                          <label>Fecha de registro:</label>
+                          <input type="datetime" class="form-control" id="dateCreated_update" disabled>
+                          <label>Fecha de actualización:</label>
+                          <input type="datetime" class="form-control" id="dateUpdate_update" disabled>
+                          <label>Estatus (1 = Activo  0 = Inactivo):</label>
+                          <input type="text" class="form-control" id="state_update">
+                          <label>Categoría:</label>
+                          <input type="text" class="form-control" id="category_update">
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Actualizar</button>
+                          </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
+
+      <!--              MODAL DELETE              -->
+
+<section>
+
+    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="javascript:void(0);" onsubmit="deleteMovie();">
+                  <div class="modal-body">
+                      <input type="hidden" id="id_delete">
+                      <label>¿Desea eliminar la película?</label>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+                  </div>
+              </form>
+         </div>
+      </div>
+  </div> 
+</section>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <!-- BOOTSTRAP -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <!-- CUSTOM -->
+  <script src="./movieController.js"></script>
+</body>
+
+</html>
